@@ -1,11 +1,18 @@
+// Descrizione:
+// Attraverso l’apposita API di Boolean
+// https://flynn.boolean.careers/exercises/api/random/mail
+// generare 10 indirizzi email e stamparli in pagina all’interno di una lista. - FATTO
+// Bonus
+// Far comparire gli indirizzi email solamente quando sono stati tutti generati. - FATTO
+
 const app = new Vue({
     el: "#app",
     data: {
         emails: []
     },
     methods: {
+        //Esegue il push su emails di una email generata random
         pushRandomEmail: function () {
-            let email = "";
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then((risposta) => {
                     // handle success
@@ -15,10 +22,9 @@ const app = new Vue({
                     // handle error
                     console.log(error);
                 });
-
-            console.log(email);
-            return email;
         },
+
+        //Esegue 10 volte il metodo pushRandomEmail
         pushTenRandomEmails: function () {
             for (let i = 0; i < 10; i++) {
                 this.pushRandomEmail();
@@ -29,10 +35,3 @@ const app = new Vue({
         this.pushTenRandomEmails();
     }
 });
-
-// Descrizione:
-// Attraverso l’apposita API di Boolean
-// https://flynn.boolean.careers/exercises/api/random/mail
-// generare 10 indirizzi email e stamparli in pagina all’interno di una lista.
-// Bonus
-// Far comparire gli indirizzi email solamente quando sono stati tutti generati.
