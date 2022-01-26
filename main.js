@@ -16,17 +16,17 @@ const app = new Vue({
                     console.log(error);
                 });
 
-                console.log(email);
-                return email;
+            console.log(email);
+            return email;
         },
-        pushTenRandomEmails: function() {
+        pushTenRandomEmails: function () {
             for (let i = 0; i < 10; i++) {
                 this.pushRandomEmail();
             }
         }
     },
-    mounted: function() {
-       this.pushTenRandomEmails();
+    mounted: function () {
+        this.pushTenRandomEmails();
     }
 });
 
