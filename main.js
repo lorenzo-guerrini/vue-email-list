@@ -4,22 +4,29 @@ const app = new Vue({
         emails: []
     },
     methods: {
-        getRandomEmail: function () {
+        pushRandomEmail: function () {
+            let email = "";
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then((risposta) => {
                     // handle success
-                    console.log(risposta.data.response);
-                    this.emails.push(risposta.data.response);
-                    
+                    this.emails.push(risposta.data.response)
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
                 });
+
+                console.log(email);
+                return email;
+        },
+        pushTenRandomEmails: function() {
+            for (let i = 0; i < 10; i++) {
+                this.pushRandomEmail();
+            }
         }
     },
     mounted: function() {
-       this.getRandomEmail();
+       this.pushTenRandomEmails();
     }
 });
 
